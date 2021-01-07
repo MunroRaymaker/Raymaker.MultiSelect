@@ -1,0 +1,62 @@
+﻿@page
+
+@model Raymaker.MultiSelect.Pages.ListModel
+@{
+    ViewData["Title"] = "Order Pizza";
+}
+
+
+<div class="jumbotron">
+    <h1>Bootstrap Multiselect</h1>
+    <p>See also <a href="http://davidstutz.github.io/bootstrap-multiselect/">http://davidstutz.github.io/bootstrap-multiselect/</a></p>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Customer.CustomerName">Customer Name</label>
+            <input asp-for="Customer.CustomerName" id="customerName" class="form-control" />
+            <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="example-getting-started">Select Toppings</label>
+            <br />
+
+            <!-- Build your select: -->
+            <select id="example-getting-started" asp-for="Customer.Toppings" multiple="multiple" 
+                    class="form-control bg-warning" asp-items="ViewBag.PizzaToppings">
+            </select>
+
+            <small id="groceryHelp" class="form-text text-muted">Please select some items from the above list.</small>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
+
+        <a class="btn btn-danger" asp-page="/List">Reset</a>
+    </form>
+
+    @if (Model.Customer != null)
+    {
+        <p>
+            <span>@Model.Customer.CustomerName ordered @string.Join(",", Model.Customer.Toppings)</span>
+        </p>
+    }
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Initialize the plugin: -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example-getting-started').multiselect(
+                {
+                    enableHTML: false,              // prevent XSS (default set to false)
+                    inheritClass: true,             // show button class
+                    numberDisplayed: 2,             // max number of options to display
+                    includeSelectAllOption: true    // includes a select all option at the top
+                });
+        });
+    </script>
+}
