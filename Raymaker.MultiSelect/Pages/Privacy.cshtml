@@ -1,9 +1,9 @@
-﻿@page
+﻿@page "{id:int?}/{date:datetime?}"
 @model PrivacyModel
 @{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title"] @RouteData.Values["id"] @RouteData.Values["date"]</h1>
 
 <p>Use this page to detail your site's privacy policy.</p>
 

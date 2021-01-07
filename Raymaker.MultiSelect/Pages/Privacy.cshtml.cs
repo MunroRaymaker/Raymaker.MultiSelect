@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace Raymaker.MultiSelect.Pages
@@ -12,8 +14,9 @@ namespace Raymaker.MultiSelect.Pages
             this._logger = logger;
         }
 
-        public void OnGet()
+        public void OnGet([FromQuery(Name = "EmpNo")] string empNo, [FromQuery(Name = "Date")] DateTime date)
         {
+            
         }
     }
 }

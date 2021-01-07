@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,12 +31,19 @@ namespace Raymaker.MultiSelect
                 app.UseExceptionHandler("/Error");
 
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
 
-            app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
+                // Add any legacy routes here
+                endpoints.MapGet("privacy.aspx", async context =>
+                {
+                    var query = context.Request.QueryString;
+                    await Task.Run(() => context.Response.Redirect("/privacy" + query.Value));
+                });
+            });
         }
     }
 }
