@@ -38,10 +38,10 @@ namespace Raymaker.MultiSelect
                 endpoints.MapRazorPages();
 
                 // Add any legacy routes here
-                endpoints.MapGet("privacy.aspx", async context =>
+                endpoints.MapGet("legacy.aspx", async context =>
                 {
                     var query = context.Request.QueryString;
-                    await Task.Run(() => context.Response.Redirect("/privacy" + query.Value));
+                    await Task.Run(() => context.Response.Redirect("/legacy" + query.Value));
                 });
             });
         }
