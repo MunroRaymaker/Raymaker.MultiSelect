@@ -32,6 +32,9 @@ namespace Raymaker.MultiSelect
 
             app.UseStaticFiles();
             app.UseRouting();
+            
+            app.UseStatusCodePagesWithRedirects("/errors/{0}");
+            
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
