@@ -13,7 +13,7 @@
     <form method="post">
         <div class="form-group">
             <label asp-for="Customer.CustomerName">Customer Name</label>
-            <input asp-for="Customer.CustomerName" id="customerName" class="form-control" />
+            <input asp-for="Customer.CustomerName" class="form-control" />
             <span asp-validation-for="Customer.CustomerName" class="text-danger"></span>
         </div>
 
@@ -28,8 +28,12 @@
 
             <small id="groceryHelp" class="form-text text-muted">Please select some items from the above list.</small>
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
 
+        <div class="form-group">
+            <span>Delivery is available for @string.Format("{0:c}", Model.Delivery.Price)</span>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit" asp-page-handler="Submit" />
         <a class="btn btn-danger" asp-page="/List">Reset</a>
     </form>
 
