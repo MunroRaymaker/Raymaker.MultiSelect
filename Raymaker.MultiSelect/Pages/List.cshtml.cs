@@ -20,6 +20,7 @@ namespace Raymaker.MultiSelect.Pages
         [BindProperty]
         public CustomerModel Customer { get; set; }
 
+        [BindProperty]
         public Delivery Delivery { get; set; }
 
         public void OnGet()

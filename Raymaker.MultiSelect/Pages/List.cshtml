@@ -18,6 +18,11 @@
         </div>
 
         <div class="form-group">
+            <label asp-for="Customer.BirthDate">Birth date</label>
+            <input asp-for="Customer.BirthDate" asp-format="{0:yyyy-MM-dd}" class="form-control mw-250" />
+        </div>
+
+        <div class="form-group">
             <label for="example-getting-started">Select Toppings</label>
             <br />
 
