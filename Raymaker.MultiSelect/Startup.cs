@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Raymaker.MultiSelect.Middleware;
 using Raymaker.MultiSelect.Models;
 
 namespace Raymaker.MultiSelect
@@ -32,6 +33,8 @@ namespace Raymaker.MultiSelect
                 app.UseDeveloperExceptionPage();
             else
                 app.UseExceptionHandler("/Error");
+
+            app.UseElapsedTimeMiddleware();
 
             app.UseStaticFiles();
             app.UseRouting();
