@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Raymaker.MultiSelect.Middleware;
 using Raymaker.MultiSelect.Models;
+using Raymaker.MultiSelect.Services;
 
 namespace Raymaker.MultiSelect
 {
@@ -24,6 +25,8 @@ namespace Raymaker.MultiSelect
             services.AddRazorPages();
             services.Configure<PizzaOptions>(Configuration);
             services.Configure<EmailOptions>(Configuration);
+            services.AddMemoryCache();
+            services.AddTransient<ICarService, CarService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
